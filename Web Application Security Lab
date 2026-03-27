@@ -1,0 +1,210 @@
+Web Application Security Testing Lab
+Skills: OWASP Top 10, SQL injection, XSS, authentication flaws
+Tools: Burp Suite, OWASP Juice Shop, DVWA
+Outcome: Pen test report with screenshots
+
+A web application security assessment was conducted against two intentionally vulnerable applications: DVWA (Damn Vulnerable Web Application) and OWASP Juice Shop. The purpose of this assessment was to identify common web vulnerabilities aligned with the OWASP Top 10 using manual testing techniques and Burp Suite.
+The assessment identified multiple high-risk vulnerabilities, including SQL Injection, Cross-Site Scripting (XSS), and authentication and access control weaknesses. These issues demonstrate improper input handling, insufficient output encoding, and weak session management.
+Overall, the applications exhibit vulnerabilities that could allow attackers to access sensitive data, execute client-side attacks, and bypass security controls.
+
+Applications Tested:
+•	DVWA (hosted locally) 
+•	OWASP Juice Shop (hosted locally via Docker) 
+Tools Used:
+•	Burp Suite Community Edition 
+•	Firefox (proxy configured) 
+•	Docker 
+Testing Methodology:
+•	Manual testing 
+•	Request interception and modification 
+•	Repeater-based testing 
+•	OWASP Top 10 alignment
+
+Methodology
+Testing was conducted by intercepting HTTP and HTTPS traffic using Burp Suite. Requests were analyzed and modified using the Repeater tool to evaluate how user-controlled input was processed by the server.
+
+The following methodology was used:
+•	Identify input fields and API endpoints 
+•	Capture requests via proxy 
+•	Modify parameters (GET, POST, JSON) 
+•	Analyze server responses 
+•	Confirm vulnerability behavior 
+•	Document findings with evidence 
+
+Findings
+
+Finding 1: SQL Injection
+Application: DVWA
+Severity: High
+OWASP Category: Injection
+Endpoint:
+/vulnerabilities/sqli/
+Description:
+The application fails to properly validate user input in the id parameter. Manipulating this parameter alters the backend database query, allowing the retrieval of unintended data, like the name and surname of user, as seen in the screenshot below.
+Evidence:
+A modified request resulted in multiple user records being returned instead of a single result.
+Impact:
+•	Unauthorized access to database contents 
+•	Potential data leakage 
+•	Possible authentication bypass 
+Solution:
+•	Use parameterized queries (prepared statements) 
+•	Validate and sanitize input 
+•	Avoid dynamic SQL queries 
+Screenshots:
+                            
+
+
+Finding 2: Stored Cross-Site Scripting (XSS)
+Application: DVWA
+Severity: High
+OWASP Category: Injection
+Endpoint:
+/vulnerabilities/xss_s/
+Description:
+User input submitted through the guestbook is stored and rendered without proper output encoding. This allows attacker-controlled input to be displayed to all users.
+Evidence:
+Submitted input remained visible after page reload and was rendered directly in the HTML response.
+Impact:
+•	Persistent client-side compromise 
+•	Session hijacking risk 
+•	Malicious content delivery to all users 
+Solution:
+•	Encode output using context-aware encoding (e.g., htmlspecialchars) 
+•	Validate input length and format 
+•	Implement Content Security Policy (CSP) 
+
+Screenshots
+ 
+ 
+
+Finding 3: Reflected Cross-Site Scripting
+Application: DVWA
+Severity: Medium
+OWASP Category: Injection
+Endpoint:
+/vulnerabilities/xss_r/
+Description:
+User input is reflected in the response without proper sanitization or encoding, allowing manipulation of page content.
+Impact:
+•	User-targeted attacks 
+•	Phishing and redirection risks 
+Solution:
+•	Encode output before rendering 
+•	Validate input 
+•	Avoid reflecting raw user input 
+
+Screenshot
+ 
+
+Finding 4: Authentication Weakness (Brute Force)
+Application: DVWA
+Severity: Medium
+OWASP Category: Identification and Authentication Failures
+Endpoint:
+/vulnerabilities/brute/
+Description:
+The application allows unlimited login attempts without rate limiting or account lockout. 
+Impact:
+•	Susceptible to brute force attacks 
+•	Increased likelihood of credential compromise 
+Solution:
+•	Implement rate limiting 
+•	Add account lockout after failed attempts 
+•	Use CAPTCHA or Multi-Factor Authentication(MFA)
+
+
+ Finding 5: Insecure Session Handling
+Application: DVWA
+Severity: Low
+OWASP Category: Security Misconfiguration
+Description:
+Session cookies lacked proper security controls and flags, and were reused across requests.
+Impact:
+•	Potential session hijacking risk 
+Solution:
+•	Set HttpOnly, Secure, and SameSite flags 
+•	Regenerate session IDs after login 
+Screenshot
+ 
+
+ OWASP JUICE SHOP FINDINGS
+Finding 7: API Authentication Handling (JWT)
+Application: Juice Shop
+Severity: Medium
+OWASP Category: Identification and Authentication Failures
+Endpoint:
+/rest/user/login
+Description:
+The application uses JWT tokens for authentication. Improper validation or handling of tokens could lead to unauthorized access.
+Evidence:
+Authorization headers containing Bearer tokens were required for accessing protected endpoints.
+Impact:
+•	Token misuse could lead to account compromise 
+•	Session hijacking risk 
+Solution:
+•	Validate tokens properly server-side 
+•	Implement token expiration and rotation 
+•	Avoid exposing sensitive token data 
+
+Screenshot:
+ 
+ 
+
+Finding 8: Input Handling in Search Functionality
+Application: Juice Shop
+Severity: Low
+OWASP Category: Injection
+Endpoint:
+/rest/products/search?q=
+
+Description:
+User input is passed directly into search queries without strong validation.
+
+Impact:
+•	Potential injection attack surface 
+•	Unpredictable application behavior
+Solution:
+•	Validate input length and format 
+•	Sanitize user input 
+•	Use safe query handling 
+
+Screenshots: 
+
+  
+ 
+Finding 9: Stored Input Handling in Reviews
+
+Application: Juice Shop
+Severity: Medium
+OWASP Category: Injection
+Endpoint:
+/rest/products/reviews
+
+Description:
+User-submitted reviews are stored and rendered dynamically. Improper handling could allow client-side injection if not encoded.
+
+Impact:
+•	Persistent user-controlled content 
+•	Potential client-side attacks 
+Solution:
+•	Encode output before rendering 
+•	Validate input 
+•	Apply CSP 
+
+Screenshots:
+ 
+ 
+Risk Summary
+Severity	Count
+High	      3
+Medium	    4
+Low	        2
+
+Conclusion
+This assessment demonstrated how common web application vulnerabilities can be identified through manual testing and request manipulation. The findings highlight critical issues in input validation, output encoding, authentication, and access control.
+Through testing both DVWA and Juice Shop, the assessment covered both traditional web applications and modern API-based architecture. The use of Burp Suite allowed for effective interception, analysis, and manipulation of HTTP requests.
+Addressing these vulnerabilities would significantly improve the overall security posture of the applications.
+
+
+
