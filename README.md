@@ -1,0 +1,3 @@
+A web application security assessment was conducted against two intentionally vulnerable applications: DVWA (Damn Vulnerable Web Application) and OWASP Juice Shop. The purpose of this assessment was to identify common web vulnerabilities aligned with the OWASP Top 10 using manual testing techniques and Burp Suite.
+The assessment identified multiple high-risk vulnerabilities, including SQL Injection, Cross-Site Scripting (XSS), and authentication and access control weaknesses. These issues demonstrate improper input handling, insufficient output encoding, and weak session management.
+Overall, the applications exhibit vulnerabilities that could allow attackers to access sensitive data, execute client-side attacks, and bypass security controls.
