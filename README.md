@@ -26,10 +26,10 @@ Stored and Reflected XSS vulnerabilities
 Weak authentication and session handling
 API request manipulation and token analysis
 
+Incident Response Lab
 
 Tools Used: Linux Logs (journalctl), SSH, Firewall (iptables)
 Skills: Threat Detection, Log Analysis, Incident Handling
-
 
 Scenario:
 Simulated a brute force attack via SSH and performed full incident response lifecycle:
@@ -39,6 +39,7 @@ Identification of attacker source
 Containment via IP blocking
 System recovery and hardening
 
+Link to full report 
 
 Projects in this portfolio follow structured security workflows:
 
