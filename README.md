@@ -6,7 +6,7 @@ About Me
 
 I am a cybersecurity student with a focus on offensive and defensive security techniques, including penetration testing, log analysis, and incident response. This portfolio highlights my ability to identify, analyze, and respond to security vulnerabilities in controlled lab environments.
 
-⚙️ Skills Demonstrated
+Skills Demonstrated
 Web Application Security Testing (DVWA, Juice Shop)
 OWASP Top 10 Vulnerability Analysis
 SQL Injection & Cross-Site Scripting (XSS)
@@ -16,7 +16,7 @@ Log Analysis using Linux (journalctl)
 Traffic Interception & Analysis (Burp Suite)
 
 Projects
- Web Application Security Testing Lab (DVWA & Juice Shop)
+Web Application Security Testing Lab (DVWA & Juice Shop)
 
 Tools Used: Burp Suite, DVWA, OWASP Juice Shop
 Skills: SQL Injection, XSS, Authentication Flaws, API Testing
@@ -25,6 +25,8 @@ SQL Injection vulnerability allowing database access
 Stored and Reflected XSS vulnerabilities
 Weak authentication and session handling
 API request manipulation and token analysis
+
+Link to full report - 
 
 Incident Response Lab
 
@@ -39,7 +41,7 @@ Identification of attacker source
 Containment via IP blocking
 System recovery and hardening
 
-Link to full report 
+Link to full report - https://github.com/JOSHCODES-MIZ/Cybersecurity-portfolio/blob/main/Incident%20Response%20Lab.pdf
 
 Projects in this portfolio follow structured security workflows:
 
