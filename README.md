@@ -27,8 +27,7 @@ Weak authentication and session handling
 API request manipulation and token analysis
 
 Link to full report - https://github.com/JOSHCODES-MIZ/Cybersecurity-portfolio/blob/main/Web%20Application%20Security%20Testing%20Lab.pdf
-
-Incident Response Lab
+Linux Serever Hardening project
 
 Tools Used: Linux Logs (journalctl), SSH, Firewall (iptables)
 Skills: Threat Detection, Log Analysis, Incident Handling
