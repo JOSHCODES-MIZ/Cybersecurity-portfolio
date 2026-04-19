@@ -50,6 +50,23 @@ Analysis of Impact
 Remediation Recommendations
 Documentation of Findings
 
+Home Security Assessment
+
+Tools Used: Network scanning, router configuration, manual inspection
+Skills: Risk Assessment, Threat Identification, Security Hardening
+
+Scenario: Conducted a security assessment of a home network and physical environment to identify vulnerabilities and improve overall security posture.
+
+What I did:
+
+Evaluated Wi-Fi security configuration (encryption, passwords, SSID settings)
+Identified potential risks such as weak credentials and unsecured devices
+Assessed connected devices for exposure and unnecessary services
+Reviewed physical security risks (device placement, access points)
+Provided recommendations including stronger authentication, network segmentation, and firmware updates
+
+Link to project - https://github.com/JOSHCODES-MIZ/Cybersecurity-portfolio/blob/main/Home%20Network%20Security%20Assessment%20Report.pdf
+
 
 Contact
 GitHub: https://github.com/JOSHCODES-MIZ
